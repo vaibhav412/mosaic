@@ -4,6 +4,8 @@ from sklearn.svm import SVC
 from sklearn.model_selection import cross_val_score
 from skimage.io import imread
 from skimage.filters import threshold_otsu
+import cv2
+from PIL import Image
 
 letters = [
             '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D',
@@ -15,11 +17,15 @@ def read_training_data(training_directory):
     image_data = []
     target_data = []
     for each_letter in letters:
-        for each in range(10):
-            image_path = os.path.join(training_directory, each_letter, each_letter + '_' + str(each) + '.jpg')
+        for each in range(1):
+            image_path = os.path.join(training_directory, each_letter, each_letter + '_' + str(each+1) + '.jpg')
             # read each image of each character
-            img_details = imread(image_path, as_gray=True)
+            # img_details = imread(image_path, as_gray=True)
+            image = Image.open(image_path)
+            img_details = image.resize((400, 400))
+            img_details.save('image_400.jpg')
             # converts each character image to binary image
+            # img_details = cv2.resize(img_details,(20,20))
             binary_image = img_details < threshold_otsu(img_details)
             # the 2D array of each image is flattened because the machine learning
             # classifier requires that each sample is a 1D array
@@ -49,7 +55,7 @@ def cross_validation(model, num_of_fold, train_data, train_label):
 #
 # training_dataset_dir = os.path.join(current_dir, 'train')
 print('reading data')
-training_dataset_dir = './train20X20'
+training_dataset_dir = './dataset'
 image_data, target_data = read_training_data(training_dataset_dir)
 print('reading data completed')
 
@@ -67,6 +73,6 @@ svc_model.fit(image_data, target_data)
 
 import pickle
 print("model trained.saving model..")
-filename = './finalized_model.sav'
+filename = './finalized_model1.sav'
 pickle.dump(svc_model, open(filename, 'wb'))
 print("model saved")

@@ -14,7 +14,7 @@ import os
 import shutil
 
 
-car_image = imread("c9.png", as_gray=True)
+car_image = imread("test/1.png", as_gray=True)
 # it should be a 2 dimensional array
 print(car_image.shape)
 
