@@ -15,9 +15,6 @@ plate_string = ''
 for eachPredict in classification_result:
     plate_string += eachPredict[0]
 
-
-
-
 column_list_copy = SegmentCharacters.column_list[:]
 SegmentCharacters.column_list.sort()
 rightplate_string = ''

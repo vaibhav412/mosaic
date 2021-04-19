@@ -21,8 +21,6 @@ for eachPredict in classification_result:
 print('Predicted license plate')
 print(plate_string)
 
-
-
 column_list_copy = SegmentCharacters.column_list[:]
 SegmentCharacters.column_list.sort()
 rightplate_string = ''

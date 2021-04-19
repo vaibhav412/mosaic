@@ -29,13 +29,13 @@ plt.show()
 
 
 label_image = measure.label(binary_car_image)
+# For Full car Image
+# plate_dimensions = (0.03*label_image.shape[0], 0.08*label_image.shape[0], 0.15*label_image.shape[1], 0.3*label_image.shape[1])
+# plate_dimensions2 = (0.08*label_image.shape[0], 0.2*label_image.shape[0], 0.15*label_image.shape[1], 0.4*label_image.shape[1])
 
-plate_dimensions = (0.03*label_image.shape[0], 0.08*label_image.shape[0], 0.15*label_image.shape[1], 0.3*label_image.shape[1])
-plate_dimensions2 = (0.08*label_image.shape[0], 0.2*label_image.shape[0], 0.15*label_image.shape[1], 0.4*label_image.shape[1])
-
-
-# plate_dimensions = (0.1*label_image.shape[0], label_image.shape[0], 0.1*label_image.shape[1], label_image.shape[1])
-# plate_dimensions2 = (0.1*label_image.shape[0], label_image.shape[0], 0.1*label_image.shape[1], label_image.shape[1])
+# for cropped number plate images
+plate_dimensions = (0.1*label_image.shape[0], label_image.shape[0], 0.1*label_image.shape[1], label_image.shape[1])
+plate_dimensions2 = (0.1*label_image.shape[0], label_image.shape[0], 0.1*label_image.shape[1], label_image.shape[1])
 min_height, max_height, min_width, max_width = plate_dimensions
 plate_objects_cordinates = []
 plate_like_objects = []
@@ -107,9 +107,11 @@ fig, ax1 = plt.subplots(1)
 ax1.imshow(license_plate, cmap="gray")
 
 
-character_dimensions = (0.35*license_plate.shape[0], 0.60*license_plate.shape[0], 0.05*license_plate.shape[1], 0.15*license_plate.shape[1])
+# For Full car Image
+# character_dimensions = (0.35*license_plate.shape[0], 0.60*license_plate.shape[0], 0.05*license_plate.shape[1], 0.15*license_plate.shape[1])
 
-# character_dimensions = (0.05*license_plate.shape[0], 0.65*license_plate.shape[0], 0.05*license_plate.shape[1], 0.65*license_plate.shape[1])
+# for cropped number plate images
+character_dimensions = (0.05*license_plate.shape[0], 0.65*license_plate.shape[0], 0.05*license_plate.shape[1], 0.65*license_plate.shape[1])
 min_height, max_height, min_width, max_width = character_dimensions
 
 characters = []
